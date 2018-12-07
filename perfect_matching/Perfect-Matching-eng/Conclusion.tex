@@ -1,0 +1,11 @@
+Despite the advantages of the algorithm presented, the code can be improved. For example, the following changes can be made:
+\begin{itemize}
+\item the dictionaries (.keys inside the code) could be used for the vertices and not for the arcs, but in this case we should solve the problem of the weights to assign to the arcs;
+\item the examples were placed in a separate python file and it could be able to structure it as a text file and recall it in the python matching file;
+\end {itemize}
+
+The initial idea was to use the Call-Back functions, i.e. to use it within the while loop as in the case of the TSP (Traveler Salesman Problem). In this case, however, the Call-Back functions could not be used because Gurobi does not allow the user to use the value of the variables except in the MIP phase, i.e. in a phase of the process in which there are only whole values of the solutions , but the problem that you want to get around with this algorithm is to use only whole values of the solutions.
+
+So we came to a contradiction and we had to discard the idea of using Call-Back within the code.
+
+In conclusion, the algorithm can be improved through the resolution of some problems and the problem of using a certain type of functions within the code due to program restrictions has been circumvented.

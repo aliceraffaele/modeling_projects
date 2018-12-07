@@ -1,0 +1,242 @@
+La teoria dei grafi è una branca della matematica, in particolare della geometria combinatoria, che si occupa dello studio dei grafi, i quali sono oggetti che permettono di schematizzare una grande varietà  di situazioni e di processi e spesso di consentirne delle analisi in termini quantitativi e algoritmici. Essi hanno anche una notevole interesse nell'informatica, soprattutto nello sviluppo di algoritmi specifici.
+Tra i tanti problemi studiati in teoria dei grafi, uno dei più famosi è quello del Perfect Machting (in italiano "Accoppiamento perfetto"). 
+Prima di introdurre il problema, è doveroso fare un piccolo richiamo su alcuni concetti base importanti che serviranno in seguito
+
+% 1.1
+\section{Generalità sui grafi}
+\begin{definizione}
+Si dice grafo una coppia ordinata $G$ $=$ $(V,E)$ di insiemi, con V insieme dei vertici (o nodi) ed E insieme degli archi, tali che gli elementi di E siano coppie di elementi di V.\\
+\\
+L'ordine di un grafo, denotato con |V(G)|, indica il numero dei vertici di G; la dimensione di un grafo G, denotato con |E(G)|, indica il numero degli archi di un grafo G.\\
+\\
+Un vertice $v \in V$ è incidente a un arco $e \in E$ se $v \in e$.\\
+Due archi $e_{1}, e_{2} \in E$ sono incidenti (o adiacenti) se hanno un vertice in comune.\\
+Due vertici $v_{1}, v_{2} \in V$ sono adiacenti se esiste un arco e $\in E$ tale che $e=v_{1}v_{2}$.
+\end{definizione}
+
+\begin{definizione}
+Siano $G$ $=$ $(V,E)$ e $G'$ $=$ $(V',E')$ due grafi. Se $V'\subseteq V$ e $E'\subseteq E$, allora $G'$ è un sottografo di $G$.
+Inoltre, se $G\ne G$, allora diciamo che $G'$ è un sottografo proprio di $G$.
+\end{definizione}
+
+\begin{definizione}
+Sia $G$ $=$ $(V,E)$ un grafo e sia $v \in V$ un vertice. Il grado di un vertice v è definito come
+\begin{equation*}
+d_{G}(V) := |N_{G}(v)|
+\end{equation*}
+dove $N_{G}(v) := \left \{ w \in V : vw \in E \right \}$ è detto intorno di $v$. In altre parole è il numero di archi indicenti nel vertice $v \in V$.
+Definiamo poi
+\begin{equation*}
+\delta(G) := \min\limits_{v \in V} d_{G}(v) \in \mathbb{Z}
+\end{equation*}
+il grado minimo di G, cioè il grado del vertice con meno archi incidenti e
+\begin{equation*}
+\Delta(G) := \max\limits_{v \in V} d_{G}(v) \in \mathbb{Z}
+\end{equation*}
+il grado massimo di G, cioè il grado del vertice con più archi incidenti.
+Inoltre, denotiamo il grado medio di G come
+\begin{equation*}
+d(G) := \frac{1}{|V|} \sum_{v \in V} d_{G}(v)
+\end{equation*}
+Chiaramente si ha che $\delta(G) \le d(G) \le \Delta(G)$.
+\end{definizione}
+
+\begin{definizione}
+Un grafo $G$ $=$ $(V,E)$ è detto K-regolare se
+\begin{equation*}
+d_{G} = k \qquad \forall v \in V
+\end{equation*}
+In altre parole, se tutti i vertici hanno lo stesso grado. Di conseguenza, si ha $\delta = d = \Delta$.
+Nello specifico, i grafi 3-regolari sono detti anche grafi cubici.
+\end{definizione}
+
+\begin{definizione}
+Un cammino è un grafo $P = (V,E)$ nella forma $V = \left \{x_{0}x_{1}, x_{1}x_{2}, \dots, x_{k-1}x_{k} \right \}$ dove\\
+$x_{0}$ e $x_{k}$ sono i vertici esterni di P;\\
+$x_{2}, \dots, x_{k-1}$ sono i vertici interni di P;\\
+Il numero di archi definisce la lunghezza di P;\\ 
+Con la notazione $P_{k}$ viene indicato un cammino di lunghezza $k$.
+\end{definizione}
+
+\begin{definizione}
+Un grafo è detto completo se ogni vertice è collegato a tutti gli altri vertici rimanenti. Esso viene denotato con $K_{n}$ (con $n \in N $ il numero dei vertici)
+\end{definizione}
+
+\begin{definizione}
+Un grafo $G$ $=$ $(V,E)$ è bipartito se il suo insieme di vertici $V$ può essere partizionato in due sottoinsiemi disgiunti $V$ $=$ $V_{1} \cup V_{2}$ tali che ogni arco $e \in E$ ha la forma $v_{1}v_{2}$, con $v_{1} \in V_{1}$ e $v_{2} \in V_{2}$.
+\end{definizione}
+
+\begin{definizione}
+Si definisce grafo planare un grafo $G$ tale che può essere raffigurato in un piano in modo che non abbiano archi che si intersecano.\\
+I grafi completi $K_{5}$ e $K_{3,3}$ sono esempi di grafi non planari.
+\end{definizione}
+Di seguito, vengono riportati alcuni esempi
+
+\begin{figure}[htbp]
+\begin{minipage}[htbp]{.50\textwidth}
+\centering
+\includegraphics[width=.60\textwidth]{bipartito.png}
+\caption{Grafo bipartito}
+\end{minipage}
+\begin{minipage}[htbp]{.50\textwidth}
+\centering
+\includegraphics[width=.60\textwidth]{K5.png}
+\caption{Grafo completo ($K_{5}$)}
+\end{minipage}
+\medskip
+\begin{minipage}[htbp]{.50\textwidth}
+\centering
+\includegraphics[width=.60\textwidth]{planare.png}
+\caption{Grafo planare}
+\end{minipage}
+\end{figure}
+
+%1.2
+\section{Matching e Perfect Matching}
+Dato un certo grafo $G$, si vuole trovare quanti più archi indipendenti possibili. 
+
+\begin{definizione}
+Dato un grafo $G = (V,E)$, un matching ("accoppiamento") $M(G)$ in $G$ è un sottografo di G composto da un insieme di archi a coppie non incidenti, cioè non esistono due archi che condividono un vertice in comune. Oppure, in maniera equivalente, se ogni vertice di G è incidente con al massimo un arco in M, cioè $deg(v)\le 1$ $\forall v\in G$.\\
+Questo significa che, in un matching M(G), i vertici possono essere o di grado 1 o 0. In particolare,
+\begin{itemize}
+\item se deg(v) = 1, allora il vertice v è detto accoppiato (o saturato), cioè v è incidente in uno degli archi in M
+\item se deg(v) = 0, allora il vertice v non è accoppiato.
+\end{itemize}
+In un matching, due archi non sono incidenti: se lo fossero, allora il grado del vertice che collega questi due archi avrebbe grado 2, il che viola la definizione.
+\end{definizione}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.55\textwidth]{matching.png}
+\caption{Esempi di Matching di un grafo G}
+\end{figure}
+
+
+\begin{definizione}
+Un grafo $G = (V,E)$ è detto matching massimale se nessun arco di G può essere aggiunto ad un matching M. In altre parole, se aggiungiamo un qualsiasi arco (non in M) in M, esso non è più un matching.
+\end{definizione}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.60\textwidth]{maximal.png}
+\caption{$M_{1},M_{2},M_{3}$ sono matching massimale per G}
+\end{figure}
+
+\begin{definizione}
+Dato un grafo $G = (V,E)$, M(G) è detto matching massimo se M contiene il massimo numero possibile di spigoli. Esso non è unico. Tale numero è detto numero matching. Notare che ogni matching massimo è massimale ma non il viceversa. 
+La seguente figura mostra esempi di matching massimi
+\end{definizione}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.60\textwidth]{maximum.png}
+\caption{$M_{1}$ e $M_{2}$ sono matching massimi per G e il numero matching è 2. Quindi usando il grafo G, possiamo formare solo i sottografi con solo al massimo 2 archi. Per questo abbiamo 2 come numero matching}
+\end{figure}
+
+\begin{definizione}
+Un matching M(G) di un grafo G è detto perfetto se ogni vertice $v \in G$ è incidente ad un arco $e \in M$, cioè se $deg(v) = 1 \forall v \in V$
+\end{definizione}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.60\textwidth]{perfect.png}
+\caption{$M_{1}$ e $M_{2}$ sono esempi di matching perfetto per G}
+\end{figure}
+
+\begin{osservazione}
+Dalle definizioni sopra citate si nota che:
+\begin{enumerate}
+\item Ogni matching perfetto è anche un matching massimo perché non esiste alcuna possibilità  di aggiungere un altro arco in più in un perfect matching. Di conseguenza, è anche massimale;
+\item Un matching massimo non è necessariamente perfetto.
+\item Se un grafo G ha un matching perfetto, allora il numero di vertici $|V(G)|$ è pari: se fosse dispari, allora l'ultimo vertice si accoppia con un altro e alla fine rimarrebbe un singolo vertice che non è abbinato a nessun altro e quindi avrebbe grado 0. Ma questo non è possibile per definizione di matching perfetto.
+\end{enumerate}
+\end{osservazione}
+
+\begin{figure}[htbp]
+\begin{minipage}[htbp]{.80\textwidth}
+\centering
+\includegraphics[width=.60\textwidth]{matching1.png}
+\caption{Matching non perfetto con un numero dispari di vertici}
+\end{minipage}
+\begin{minipage}[htbp]{.80\textwidth}
+\centering
+\includegraphics[width=.60\textwidth]{matching2.png}
+\caption{E' un matching ma non è perfetto sebbene abbia un numero pari di vertici}
+\end{minipage}
+\end{figure}
+
+%% 1.3
+\section{Alcuni esempi di Perfect Matching}
+Per modellare problemi di perfect matching, si utilizzano spesso grafi bipartiti. Si consideri $G = (V,E)$ un grafo bipartito con $\left \{A,B \right \}$ una bipartizione di V, cioè $V = A \cup B$ e $A \cap B = \emptyset$ e tutti archi connettono vertici tra A e B. L'obiettivo è trovare un matching M in G con quanti più archi possibili.
+
+Per risolvere alcuni problemi riguardo a possibili combinazioni di cose, si utilizzando questioni e concetti legati alla teoria dei grafi. In questa sezione tratteremo alcuni semplici esempi di perfect matching e vedremo come si risolvono. A questo proposito, enunciamo un risultato importante che sta alla base di molte applicazioni, tra cui l'esempio che seguirà :
+
+\begin{teorema}[Hall, 1935]
+Un grafo bipartito $G$ ha un matching $A$ se e solo se
+\begin{equation*}
+|N(S)| \ge |S| \qquad \forall S \subseteq A
+\end{equation*}
+\end{teorema}
+\begin{proof}
+Si veda $[1]$.
+\end{proof}
+
+\begin{esempio}
+Supponiamo di avere 6 regali (denotati con 1,2,3,4,5,6) da dare a 5 amici (Alice, Bob, Charles, Dot, Edward). La domanda è: posso distribuire un regalo ad ognuno in modo che tutti ottengano quello che desiderano?\\
+Certamente, questo dipende dalle preferenze dei singoli amici. Se nessuno di loro piacciono i miei regali allora sono stato sfortunato. Anche se a tutti piacciono alcuni dei doni, non sono in grado di soddisfarli tutti: ad esempio se nessuno ama il regalo 5 o 6, allora avrà solo 4 regali da dare ai 5 amici e quindi il problema non è risolvibile. Escludiamo quindi questi casi. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.60\textwidth]{bambini.png}
+\caption{Può ogni bambino ricevere un regalo che preferisce?}
+\end{figure}
+
+Possiamo vedere questa situazione come un grafo partizionato in due insiemi: quello dei regali e quello degli amici. Per definizione, si vede subito che il grafo in questione è bipartito. Ad ogni persona è associato un arco che indica le proprie preferenze sui regali (ad esempio Alice preferisce ricevere il regalo 1 o 3 e così via). Verifichiamo se soddisfa o meno il Teorema di Hall: consideriamo come sottoinsieme $X = \left \{ A,C,D,E \right \}$, quindi $|X| = 4$ e di conseguenza $N(X) = \left \{ 1,2,3 \right \}$, quindi $|X| = 3$. Da ciò si evince che $|X| \ge |N(X)|$ pertanto la condizione di Hall non è soddisfatta e quindi non esiste un matching. In altre parole, non è possibile distribuire a tutti il regalo desiderato e quindi accontentare tutti.
+\end{esempio}
+
+Un'altro esempio è quello del problema del Vertex Cover. 
+\begin{definizione}
+Sia $G = (V,E)$ un grafo. Una copertura di vertici di G è un sottoinsieme $U \subseteq V$ tale che ogni arco $e \in E$ è incidente a un vertice  $v \in U$. 
+\end{definizione}
+Questo è uno dei tanti argomenti sulla teoria dei grafi ed ha molte applicazioni nei problemi di perfect matching e problemi di ottimizzazione. La copertura di vertici può essere un buon approccio per un problema dove tutti gli archi di un grafo devono essere inclusi nella soluzione. 
+In particolare, spesso viene chiesto di trovare il coprimento con il numero più piccolo di vertici. 
+
+\begin{figure}[htbp]
+\begin{minipage}[htbp]{.80\textwidth}
+\centering
+\includegraphics[width=.60\textwidth]{cover.png}
+\caption{Esempi di vertex cover segnati in rosso}
+\end{minipage}
+\begin{minipage}[htbp]{.80\textwidth}
+\centering
+\includegraphics[width=.60\textwidth]{cover1.png}
+\caption{Esempi di vertex cover minimo}
+\end{minipage}
+\end{figure}
+
+
+
+\begin{osservazione}
+\begin{itemize}
+Alcune proprietà  del Vertex Cover:
+\item L'insieme di tutti i vertici è un coprimento di vertici
+\item Gli endpoints di un matching massimale formano un vertex cover
+\item Il grafo bipartito completo $K_{m,n}$ ha un vertex cover minimo dato da $min\left \{m,n \right \}$.
+\end{itemize}
+\end{osservazione}
+
+Il seguente teorema stabilisce una relazione tra vertex cover e perfect matching. In particolare
+\begin{teorema}[K\"onig, 1931]
+In un grafo G bipartito, il numero di archi di un matching massimale è uguale al numero di vertici in un vertex cover minimo.
+\end{teorema}
+\begin{proof}
+Si veda $[1]$.
+\end{proof}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.60\textwidth]{Pm.png}
+\caption{Esempio di applicazione del Teorema di K\"onig: i vertici rossi rappresentano il vertex cover minimo mentre gli archi blu indicano un matching massimo}
+\end{figure}
+
+In informatica, ci sono algoritmi che implementano questo problema.

@@ -1,0 +1,123 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc} % per mettere le lettere accentate
+%\usepackage[latin1]{inputenc}
+
+
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{frontespizio}
+% Col pacchetto tocbibind compariranno nell'indice anche
+% la bibliografia ed eventualmente l'indice analitico
+\usepackage[nottoc]{tocbibind}
+
+% Il pacchetto indentfirst abolisce la fastidiosa convenzione
+% anglosassone di fa cominciare la prima riga di un
+% capitolo o sezione a margine sinistro, senza rientro:
+\usepackage{indentfirst}
+
+%\usepackage{graphicx} % gia' caricato da uniudtesi
+%\graphicspath{{./figure/}}
+%\usepackage{epstopdf}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{latexsym}
+\usepackage{mathtools}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\V}{\mathcal{V}_{t}}
+\newcommand{\mS}{\mathcal{S}_{t}}
+\newcommand{\Div}{\text{div}}
+\newcommand{\I}{\mathbb{I}}
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\traccia}{tr}
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\arcsen}{arcsen}
+\DeclareMathOperator*{\maxlim}{max\,lim}
+\DeclareMathOperator*{\minlim}{min\,lim}
+\DeclareMathOperator*{\deepinf}{\phantom{\makebox[0pt]{p}}inf}
+
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\varsum}[3]{\sum_{#2}^{#3}\!
+   {\vphantom{\sum}}_{#1}\;}
+\newcommand{\varprod}[3]{\sum_{#2}^{#3}\!
+   {\vphantom{\sum}}_{#1}\;}
+\newcommand{\abs}[1]{\lvert#1\rvert} %Mi permette di fare il valore assoluto con un semplice comando
+\newcommand{\opnorm}[1]{% 
+  \left\vert\mkern-1mu\left\vert\mkern-1mu\left\vert #1 
+    \right\vert\mkern-1mut\right\vert\mkern-1mu\right\vert}
+
+\newcommand{\mnorm}[1]{% 
+  \left\vert\mkern-1mu\left\vert\mkern-1mu\left\vert #1 
+    \right\vert\mkern-1mu\right\vert\mkern-1mu\right\vert}
+
+
+%%%************************************** Commento di marco: ho commentato questa parte perchè mi dava errore nella compilazione
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+%
+\theoremstyle{remark}
+\newtheorem{observation}{Observation}[chapter]
+
+
+%\usepackage{enumerate}
+%*******************************************************
+  
+ \begin{document}
+\title{\textbf{Perfect Matching}} %Review
+\author{Marco Daresta, Chiara Langella, \\ Elisa Pontiroli and Alessandro Zeggiotti }
+\date{2017-2018}
+\maketitle
+\chapter*{Abstract}
+\input{Abstract.tex}
+\tableofcontents
+\chapter{Introduction to the Problem of Perfect Matching}
+\input{PMEng.tex}
+\chapter{Algorithm}
+\input{Algo.tex}
+
+\chapter{Conclusion}
+\input{Conclusion.tex}
+
+\appendix
+\chapter{Perfect-Matching Code}
+\input{Codex.tex}
+\chapter{Perfect-Matching Code Examples}
+\input{Examples.tex}
+
+\begin{thebibliography}{90}        
+%\begin{enumerate}[{[K1]}]
+\bibitem{K1} Reinhard Diestel, "Graph Theory", Electionic Edition 2005
+\bibitem{K2} John M. Harris, Jeffry L. Hirst, Michael J.Mossinghoff, "Combinatorics and Graph Theory", Springer Edition 2008
+\bibitem{K3} Romeo Rizzi, "A Simple Minimum T-Cut Algorithm", October 23, 2002
+%\end{enumerate}
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,169 @@
+Prima di spiegare tutti i dettagli dell'algoritmo che abbiamo sviluppato, è necessario introdurre alcuni concetti teorici. \\
+
+Si consideri una grafo $G = (V, E)$, definito come coppia di insiemi: $V$ per i vertici, $E$ per gli archi; $\delta_{G}(S)$ (or $\delta(S)$) è l'insieme di quegli archi in $E$ con esattamente un estremo $S$, sottoinsieme di $V$. Definiamo un \emph{innesto} $(G,T)$ dato da un grafo connesso $G$\footnote{Un grafo $G = (V,E)$ è detto \emph{connesso} se, per ogni coppia di vertici $(u,v) \in V$ esiste un cammino che collega $u$ a $v$. Un sottografo connesso massimale di un grafo non orientato è detto \emph{componente connessa} di tale grafo.} in cui un numero pari di vertici $T \subseteq V$ vengono distinti come \emph{dispari}. La \emph{T-parità} di un insieme di vertici $S \subseteq V$ è la parità di $|S \cap T|$. Quando $S \subseteq V$ è $T$-dispari allora $\delta(S)$ un \emph{taglio T-dispari} or \emph{T-taglio}. \\
+
+Al fine di avere una descrizione completa dell'algoritmo sviluppato, consideriamo il seguente concetto di  \textbf{albero di Gomory-Hu}\footnote{Ricordiamo che un grafo aciclico è chiamato \emph{foresta} e una foresta connessa è detta \textbf{albero}} di un grafo indiretto, ovvero un grafo non orientato, è un albero pesato che rappresenta il minimo $\{s,t\}$-taglio per ogni coppia $\{s,t\}$ nel grafo. L'albero di Gomory-Hu può essere costruito calcolando $|V| - 1$ volte il massimo flusso.
+
+\begin{definizione}
+ Sia $G = ((V_G, E_G), c)$ un grafo indiretto in cui $c(u,v)$ rappresenta la capacità dell'arco $(u,v)$ rispettivamente. Denotiamo la capacità minima di un $\{s,t\}$-taglio con $\lambda_{s,t}$ per ogni $\{s,t\} \in V_G$. Sia $T = (V_T, E_T)$ un albero con $V_T = V_G$, denotiamo l'insieme di archi presenti in un cammino $\{s,t\}$ con $P_{s,t}$ per ogni $\{s,t\} \in V_T$. Allora $T$ è detto un \textbf{albero di Gomory-Hu} di $G$ ise
+ \[
+ \lambda_{s,t} = \min_{e \in P_{s,t}} c(S_e, T_e) \quad \text{per ogni} \quad \{s,t\} \in V_{G},
+ \]
+dove
+ \begin{enumerate}
+ \item $S_e$ e $T_e$ sono due componenti connesse di $T \setminus \{e\}$, nel senso che $(S_e, T_e)$ forma un $s,t$-taglio in G. \\
+ \item $c(S_e, T_e)$ è la capacità di taglio in G.
+ \end{enumerate}
+\end{definizione}
+
+Sia $(G,T)$ un innesto e sia $c: E \to \R_+$ una funzione di \emph{costo}. Un minimo $T$-taglio per $(G,T,c)$ è un $T$-taglio $\delta(X)$ di $(G,T)$ per cui:
+\[
+c(\delta(X)) = \lambda_{G,T} = \min\{c(\delta(S)): \delta(S)\quad \text{è un $T$-taglio di} \quad(G,T) \}
+\]
+dove il costo $c(F)$ di un insieme di archi $F$ è defiinito come $\sum_{e \in F} c(e)$.
+In particolare, ricordiamo alcune nozioni basilari su submodularity e uncrossing. Il complementare di $S \subseteq V$ in $V$ è definito come $\bar{S} = V \setminus S$. \emph{Switching} $S$ significa rimpiazzare $S$ con $\bar{S}$. Per esempio, se $S = X$, allora dopo lo switching  di $S$, otteniamo che  $S = \bar{X}$ e $\bar{S} = X$.\\
+Siano $(G, T)$ un innesto e $S \subseteq V$ un insieme. 
+
+\begin{osservazione}
+Switching S non cambia la $T$-parità di $S$ (nemmeno $\delta(S)$), dato che $|S \cap T|$ e $|\bar{S} \cap T|$ hanno la stessa parità poiché $|T|$ è pari.
+\end{osservazione}
+
+\begin{proposizione}
+Siano (G,T) un innesto e $S, X \subseteq V$ sottoinsiemi di $V$. Allora abbiamo: 
+\begin{enumerate}
+\item Switching S cambia la $T$-parità di $S \cap X$ se e solo se X è T-dispari.\\
+\item $S \cap X$ e $S \cup X$ hanno la stessa T-parità se e solo se S e X hanno la stessa T-parità. \\
+\item Switching S cambia la T-parità di $S \cup X$ se e solo se X è T-dispari.
+\end{enumerate}
+\end{proposizione}
+
+\begin{proof}
+Si noti che $|(S \cap X) \cap T| = |S \cap (X \cap T)|$ la cui parità è influenzata dallo switching di $S$ se e solo se $|X \cap T|$ è dispari, ovvero, se e solo se $X$ è $T$-dispari. Questo prova $(1)$. Per ottenere $(2)$ si noti che $|(S \cap X) \cap T| + |(S \cup X) \cap T| = |S \cap T| + |X \cap T|$. In fine, $(3)$ è una conseguenza di $(1)$ e $(2)$.
+\end{proof}
+
+I lemmi che seguono caratterizzano una proprietà dei tagli, conosciuta come \emph{submodularity}.
+\begin{lemma}
+Dato $G$ un grafo con funzione di costo $c: E \longmapsto \R_+$. Siano $S_{1}, S_{2} \subseteq V$.
+\begin{equation}
+c(\delta(S_{1} \cap S_{2})) + c(\delta(S_{1} \cup S_{2})) \leq c(\delta(S_1)) + c(\delta(S_2))
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Supponiamo che ogni arco $uv$ contribuisca sia al lato destro come a quello sinistro di (2.1). Dalla Propositione 2.2, se $S_1 \cap S_2$ ha diverse $\{u,v\}$-parità, lo stesso vale per $S_1$ e $S_2$. Quindi, avendo supposto il falso, allora entrambi $S_1 \cap S_2$ e $S_1 \cup S_2$ saranno $\{u,v\}$-dispari. Assumiamo senza perdita di generalità che $u \in S_1 \cup S_2$ e $u \notin S_1 \cup S_2$. Allora, $u \in S_1, S_2$ e $u \notin S_1, S_2$
+\end{proof}
+
+Se $S \cap X \neq \O$ per ogni possibile switching di $S$ e $X$, allora si dice che $S$ e $X$ si \emph{incrociano}. Ora tutto ciò di cui abbiamo bisogno è che le funzioni di taglio obbediscano al seguente lemma. 
+
+\begin{lemma}
+Siano $T_{1}, T_{2}$ sottoinsiemi di V, aventi cardinalità pari. Sia $\delta(S_1)$ un minimo $T_1$-taglio e assumiamo che  $S_1$ sia $T_2$-pari. Allora esiste un minimo $T_2$-taglio $\delta(S_2)$ tale che $S_1$ e $S_2$ non si incrociano.
+\end{lemma}
+
+\begin{proof}
+Sia $\delta(X)$ un minimo $T_2$-taglio. Ricordiamo che, dalla Proposizione 2.2, lo switching di $S_1$ cambia la  $T_2$-parità di $S_1 \cup X$ mentre lo switching di $X$ cambia la $T_1$-parità di $S_1 \cap X$ lasciando la  $T_2$-parità di $S_1 \cup X$ intatta. Pertanto, attuando possibilmente lo switching di $S_1$, è possibile assumere che  $S_1 \cup X$ è $T_2$-dispari. In seguito, attuando possibilmente lo switching di $X$, è possibile assumere che $S_1 \cap X$ is $T_1$-dispari non modificando la $T_2$-parità di $S_1 \cup X$. 
+A questo punto, $c(\delta(S_1 \cup X)) \ge c(\delta(S_1))$ dato che $\delta(S_1)$ è un minimo $T_1$-taglio. Grazie alla proprietà di sub-modularity, $c(\delta(S_1 \cup X)) = c(\delta(X))$. Così, $\delta(S_1 \cup X)$ è un minimo $T_2$-taglio. E chiaramente, $S_1$ e $S_1 \cup X$ non si incrociano. 
+\end{proof}
+
+\section{Minimo $T$-taglio: un algoritmo semplice}
+Ora, consideriamo un $T$-taglio. Consideriamo un innesto $(G,T)$ e un insieme $S \subseteq V$ che sia $T$-pari, indichiamo con $G_S$ il grafo ottenuto da $G$ identificando tutti i nodi di $S$ con un unico nodo e definiamo $T_S := T \setminus S$. Si noti che $(G_S, T_S)$ sia un innesto. Quando $S = \{ s, t \} \subseteq T$ allora facciamo uso della seguente notazione $G_{s,t} = G_{\{s,t\}}$ and $T_{s,t} = T_{\{s,t\}}$. \\
+Dato che l'identificazione di un nodo non influenza l'insieme di archi di un grafo, una funzione di costo $c$ per $G$ è a sua volta una funzione di costo per $G_S$ e $G_{s,t}$.
+Allora, qui di seguito sono illustrati i quattro passi per calcolare $\lambda_{G,T}$:\\
+
+\texttt{MinT-cut(G,T,c)}
+\begin{enumerate}
+\item Se $T = \O$ allora risulta $\infty$, che significa che  $(G,T)$ non contiene alcun $T$-taglio;\\
+\item siano $s$ e $t$ due nodi differenti in $T$; \\
+\item sia $\delta(S)$ un minimo $\{s,t\}$-taglio; \\
+\item se $S$ è $T$-dispari allora viene restituito $\min( c(\delta(S)), \texttt{MinT-cut($G_{s,t}, T_{s,t}$, c)})$; altrimenti $\min(\texttt{MinT-cut($G_{S}, T_{S}$, c)}; \texttt{MinT-cut($G_{\bar{S}}, T_{\bar{S}}$, c)})$
+\end{enumerate}
+
+
+\section{Correttezza}
+Dato $(G,T,c)$, siano $s$ e $t$ due differenti nodi in $T$ e sia $\delta(S)$ un minimo $\{s,t\}$-taglio. La correttezza della procedura sopra descritta si basa sui seguenti due lemmi:
+\begin{lemma}
+Se $\delta(S)$ è T-dispari, allora $\lambda_{G,T} = \min(c(\delta(S)), \lambda_{G_{s,t}, T_{s,t}})$.
+\end{lemma}
+
+\begin{proof}
+Infatti, i $T_{s,t}$-tagli di $G_{s,t}$ sono esattamente i $T$-tagli di $G$ che non sono $\{s,t\}$-dispari.
+\end{proof}
+
+\begin{lemma}
+Se $\delta(S)$ è T-pari, allora $\lambda_{G,T} = \min( \lambda_{G_{S}, T_{S}}, \lambda_{G_{\bar{S}}, T_{\bar{S}}})$.
+\end{lemma}
+
+\begin{proof}
+Per prima cosa si noti che ogni $T_S$-taglio in $(G_S, T_S)$ e ogni $T_{\bar{S}}$-taglio in $(G_{\bar{S}},T_{\bar{S}})$ è anche un $T$-taglio in $(G,T)$. Questo implica che $\lambda_{G,T} \le \min( \lambda_{G_{S}, T_{S}}, \lambda_{G_{\bar{S}}, T_{\bar{S}}})$. 
+D'altra parte, sia $\delta(X)$ un minimo $T$-taglio per $(G,T,c)$. Dal Lemma 2.4, possiamo assumere che $S$ e $X$ non si incrociano. Questo significa che l'insieme degli archi $\delta_{G}(X)$ è sia $T_S$-taglio in $G_S$ che un $T_{\bar{S}}$-taglio in $G_{\bar{S}}$.
+\end{proof}
+
+\section{Calcolo di $T$-parings ottimali}
+Sia $(G,T)$ un innesto con funzione di costo $c: E \longmapsto \R_+$. Un \emph{T-pairing} è una partizione di $T$ in coppie. Il valore del $T$-pairing $\mathcal{P}$ è definita come: 
+\[
+val_G (\mathcal{P}) = \min_{\{u,v\} \in \mathcal{P}} \lambda_{G}(u,v) 
+\]
+dove $\lambda_G (u,v)$ identifica il costo di un minimo $\{u,v\}$-taglio, Sia $\mathcal{P}$ un $T$-pairing e sia $\delta(S)$ un $T$-taglio. Dato che $\delta(S)$ è $T$-dispari, $\mathcal{P}$ contiene una coppia $\{u,v\}$ tale che $\delta(S)$ è $\{u,v\}$-dispari. Pertanto, $c(\delta(S)) \ge \lambda_G (u,v) \ge val_G (\mathcal{P})$ e il valore di $\mathcal{P}$ rappresenta un limite inferiore di $\lambda_{G,T}$.\\
+In questa sezione, mostriamo che l'algoritmo \emph{MinT-cut} trova un $T$-pairing di valore $\lambda_{G,T}$.A tal proposito, consideriamo una sola iterazione dell'algoritmo. Siano $s$ e $t$ due nodi dispari. Sia $\delta(S)$ un minimo $\{s,t\}$-taglio. 
+
+\begin{lemma}
+Sia $\delta(S)$ un minimo $\{s,t\}$-taglio in $(G,c)$. Allora abbiamo: 
+\[
+\lambda_G (u,v) \ge \min(c(\delta(S)), \lambda_{G_{s,t}}(u,v)) \qquad \forall u,v \in V(G) \setminus \{s,t\}
+\]
+\end{lemma}
+
+\begin{proof}
+Infatti, gli $\{u,v\}$-tagli di $G_{s,t}$ sono esattamente gli $\{u,v\}$-tagli di $G$ che non sono $\{s,t\}$-dispari.
+\end{proof}
+
+\begin{lemma}
+Sia $\delta(S)$ un minimo $\{s,t\}$-taglio in $(G,c)$. Allora abbiamo: 
+\[
+\lambda_G (u,v) = \lambda_{G_{s}} (u,v) \qquad \forall u,v \in V(G) \setminus S
+\]
+\end{lemma}
+
+\begin{proof}
+Siano $u$ e $v$ due nodi qualsiasi di $V(G) \setminus S$. Ovviamente $\lambda_G (u,v) \le \lambda_{G_{s}} (u,v)$. D'altro canto, sia $\delta(X)$ un minimum $\{u,v\}$-taglio in $G$. Dal Lemma 2.4, possiamo assumere che $S$ e $X$ non si incrociano. allora, l'insieme degli archi $\delta_{G}(X)$ è un  $\{u,v\}$-taglio in $G_S$ e $\lambda_G (u,v) = \lambda_{G_{s}} (u,v)$.
+\end{proof}
+
+Ogni iterazione dell'algoritmo prevede due possibilità: 
+\begin{enumerate}
+\item \textbf{Caso 1}: $\delta(S)$ è $T$-dispari. Dal Lemma 2.5, $\lambda_{G,T} = \min\{c(\delta(S)), \lambda_{G_{s,t},T_{s,t}}\}$. Dal Lemma 2.7, se $\mathcal{P'}$ è un $T_{s,t}$-pairing con $val_{G_{s,t}}(\mathcal{P'}) = \lambda_{G_{s,t},T_{s,t}}$, allora $\mathcal{P} = \mathcal{P'} \cup \{s,t\}$ è un $T$-pairing con$val_{G} (\mathcal{P}) \ge \min(c(\delta(S)), val(\mathcal{P'})) = \min(c(\delta(S)), \lambda_{G_{s,t},T_{s,t}}) = \lambda_{G,T}$. \\
+\item \textbf{Caso 2}: se $\delta(S)$ è $T$-pari. Dal Lemma 2.6, $\lambda_{G,T} = \min\ \lambda_{G_{S},T_{S}}, \lambda_{G_{\bar{S}},T_{\bar{S}}}\}$. Dal Lemma 2.8, se $\mathcal{P_S}$ è un $T_{S}$-pairing con $val_{G_{S}} (\mathcal{P_S}) = \lambda_{G_{S},T_{S}}$ e $\mathcal{P_{\bar{S}}}$ è un $T_{\bar{S}}$-pairing con $val_{G_{\bar{S}}} (\mathcal{P_{\bar{S}}}) = \lambda_{G_{\bar{S}},T_{\bar{S}}}$ allora $\mathcal{P} = \mathcal{P_S} \cup \mathcal{P_{\bar{S}}}$ è un $T$-pairing con $val_{G} (\mathcal{P}) \ge \min(val(\mathcal{P_S}), val(\mathcal{P_{\bar{S}}})) = \min(\lambda_{G_{S},T_{S}}\lambda_{G_{\bar{S}},T_{\bar{S}}}) = \lambda_{G,T}$.
+\end{enumerate}  
+
+I risultati seguenti riassumono questa sezione. 
+
+\begin{teorema}
+Per ogni $(G,T,c)$ il valore massimo di un $T$-pairing è uguale al costo minimo di un T-taglio.
+\end{teorema}
+
+\begin{teorema}
+Per ogni nodo u in T esiste un nodo $v \in T \setminus \{u\}$ tale che $\{u,v\}$ è utile.
+\end{teorema}
+
+\begin{proof}
+Si applichi l'algoritmo \emph{MinT-cut} a $(G,T,c)$. Ad ogni ricorsione, si continui a scegliere $s = u$ finché il minimo $\{s,t\}$-taglio $\delta(S)$ è $T$-dispari. Dal Lemma 2.8, $\{u,v\}$ è utile rispetto a $(G,T,c)$.
+\end{proof}
+
+\section{Algoritmo}
+Abbiamo sviluppato, quindi, un algoritmo in Python usando sia il linguaggio di Gurobi che quello di Python. È possibile avviare il codice usando Spyder\footnote{Presente in Anaconda.}(la totalità del codice si trova in Appendice A). Qui di seguito analizzeremo i principali aspetti del codice. L'algoritmo può essere suddiviso in due: 
+\begin{enumerate}
+\item Nella prima parte, abbiamo definito quattro funzioni fondamentali: \texttt{Contraction}, \texttt{minCutValue}, \texttt{findsubsets} e \texttt{minCutEdges};\\
+\item Nella seconda parte, abbiamo sviluppato il modello ( ovvero funzione obiettivo e vincoli). Il ciclo \texttt{while} alla fine permette di ottimizzare il modello.
+\end{enumerate}
+
+Per facilitare la comprensione di ciò che è stato fatto, partiamo analizzando la seconda parte del codice. Per prima cosa, abbiamo creato le variabili: ponendo come limite inferiore zero, le definiamo di tipo continuo. Inizialmente, le avevamo considerate variabili binarie, ma in tal modo l'algoritmo calcolava già soluzioni intere. Pertanto, per risolvere problemi reali, abbiamo deciso di usare variabili continue. In questo caso, all'inizio si ottiene una soluzione non intera. 
+Pertanto otteniamo la funzione obiettivo: 
+\[
+\min \sum_{ij} \texttt{edges} \cdot \texttt{var}
+\]
+che minimizza la somma dei prodotti tra le variabili continue \texttt{var} e \texttt{edges} che rappresenta il costo dell'arco considerato. L'unico vincolo che consideriamo è il seguente: la somma di tutti gli archi entranti in un dato vertice deve essere pari a 1. \\
+ Dopo aver trovato tutti gli archi incidenti in un vertice $i$ e dopo aver imposto il vincolo definito sopra, definiamo il modello di ottimizzazione. Iterativamente, l'algoritmo ricerca la soluzione intera grazie ad un ciclo while. Questo significa che, nel ciclo, l'algoritmo ottimizza il modello, allora trova il valore del minimo taglio dispari e controlla se il suo valore è minore o maggiore di 1. \\
+Se il minimo taglio dispari è minore di 1, l'algoritmo identifica gli archi del minimo taglio dispari e aggiunge un vincolo, ovvero che la somma delle variabili associate agli archi del minimo taglio dispari sia maggiore o uguale ad 1.  E così via, fino a raggiungere la soluzione intera. \\
+
+Nella prima parte del codice, Per prima cosa importiamo i moduli necessari a sviluppare il modello di ottimizzazione. Questa parte si basa sulla ricerca del $T$-taglio.\\
+Abbiamo quindi definito una funzione per la contrazione, che crea un minore di $G$. La funzione \texttt{minCutValue(graph, T)} calcola il valore del minimo taglio dispari di un dato grafo; \texttt{T} è un dato usato nella ricorsione che deve essere inizializzato a '\texttt{vertices}'. La terza funzione che definiamo è \texttt{findsubset}, che trova tutti i sottoinsiemi di una fissata cardinalità di un dato insieme. Dato un grafo e il valore di uno dei suoi minimi tagli dispari, abbiamo creato una funzione che trova gli archi del minimo taglio dispari \texttt{minCutEdges}.   \\
+
+In un altro file Python abbiamo definito alcuni esempi di grafi su cui testare l'algoritmo, come il grafo di Petersen, TSP problem, un grafo che non ha perfect matching  and il grafo $K(5)$  che sono riportati nell'Appendice B. 

@@ -1,0 +1,113 @@
+\documentclass[12pt,a4paper,oneside,titlepage]{report}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[italian]{babel}
+
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{frontespizio}
+% Col pacchetto tocbibind compariranno nell'indice anche
+% la bibliografia ed eventualmente l'indice analitico
+\usepackage[nottoc]{tocbibind}
+
+% Il pacchetto indentfirst abolisce la fastidiosa convenzione
+% anglosassone di fa cominciare la prima riga di un
+% capitolo o sezione a margine sinistro, senza rientro:
+\usepackage{indentfirst}
+
+%\usepackage{graphicx} % gia' caricato da uniudtesi
+%\graphicspath{{./figure/}}
+%\usepackage{epstopdf}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{latexsym}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathbb{I}}
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\traccia}{tr}
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\arcsen}{arcsen}
+\DeclareMathOperator*{\maxlim}{max\,lim}
+\DeclareMathOperator*{\minlim}{min\,lim}
+\DeclareMathOperator*{\deepinf}{\phantom{\makebox[0pt]{p}}inf}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\varsum}[3]{\sum_{#2}^{#3}\!
+   {\vphantom{\sum}}_{#1}\;}
+\newcommand{\varprod}[3]{\sum_{#2}^{#3}\!
+   {\vphantom{\sum}}_{#1}\;}
+\newcommand{\abs}[1]{\lvert#1\rvert} %Mi permette di fare il valore assoluto con un semplice comando
+\newcommand{\opnorm}[1]{% 
+  \left\vert\mkern-1mu\left\vert\mkern-1mu\left\vert #1 
+    \right\vert\mkern-1mut\right\vert\mkern-1mu\right\vert}
+
+\newcommand{\mnorm}[1]{% 
+  \left\vert\mkern-1mu\left\vert\mkern-1mu\left\vert #1 
+    \right\vert\mkern-1mu\right\vert\mkern-1mu\right\vert}
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{proposizione}[teorema]{Proposizione}
+\newtheorem{lemma}[teorema]{Lemma}
+\newtheorem{corollario}[teorema]{Corollario}
+\newtheorem{ipotesi}[teorema]{Ipotesi}
+
+\theoremstyle{definition}
+\newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+
+\theoremstyle{remark}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+
+\usepackage{enumerate}
+
+\begin{document}
+\title{\textbf{Perfect Matching}} 
+\author{Marco Daresta, Chiara Langella, \\ Elisa Pontiroli and Alessandro Zeggiotti }
+\date{2017-2018}
+\maketitle
+\chapter*{Introduzione}
+\input{Introduzione.tex}
+\tableofcontents
+\chapter{Introduzione al problema del Perfect Matching}
+\input{PMIta.tex}
+\chapter{Algoritmo}
+\input{Algo.tex}
+\chapter{Conclusione}
+\input{Conclusione.tex}
+
+\appendix
+\chapter{Perfect-Matching Codice}
+\input{Codex.tex}
+\chapter{Perfect-Matching Code Esempi}
+\input{Examples.tex}
+
+\begin{thebibliography}{90}        
+%\begin{enumerate}[{[K1]}]
+\bibitem{K1} Reinhard Diestel, "Graph Theory", Electionic Edition 2005
+\bibitem{K2} John M. Harris, Jeffry L. Hirst, Michael J.Mossinghoff, "Combinatorics and Graph Theory", Springer Edition 2008
+\bibitem{K3} Romeo Rizzi, "A Simple Minimum T-Cut Algorithm", October 23, 2002
+%\end{enumerate}
+\end{thebibliography}
+\end{document}

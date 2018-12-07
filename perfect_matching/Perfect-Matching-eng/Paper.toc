@@ -1,0 +1,14 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Introduction to the Problem of Perfect Matching}{4}
+\contentsline {section}{\numberline {1.1}Some Generalities about Graphs}{4}
+\contentsline {section}{\numberline {1.2}Matching and Perfect Matching}{6}
+\contentsline {section}{\numberline {1.3}Some examples of Perfect Matching}{9}
+\contentsline {chapter}{\numberline {2}Algorithm}{13}
+\contentsline {section}{\numberline {2.1}Minimum $T$-cuts: a simple algorithm}{15}
+\contentsline {section}{\numberline {2.2}Correctness}{16}
+\contentsline {section}{\numberline {2.3}Computing optimal $T$-parings}{16}
+\contentsline {section}{\numberline {2.4}Algorithm}{17}
+\contentsline {chapter}{\numberline {3}Conclusion}{19}
+\contentsline {chapter}{\numberline {A}Perfect-Matching Code}{20}
+\contentsline {chapter}{\numberline {B}Perfect-Matching Code Examples}{25}
+\contentsline {chapter}{Bibliography}{27}

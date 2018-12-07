@@ -1,0 +1,40 @@
+Graph theory has a precise date of birth: 1736. On that date, the Swiss mathematician Leonhard Euler solved the problem known as the seven bridges of Königsberg. One wondered if it was possible to take a walk in the city, to leave and arrive at the same point, so as to cross all the bridges exactly once.
+
+Subsequently, in 1859 Hamilton proposed a game that, in several aspects, was linked to his theory of quaternions: the game of the icosahedron (which was actually played on a dodecahedron) was as follows: Hamilton had assigned to each vertex the name of a city and required to find a path that went around the world, that is to visit all the cities only once, and then return to the starting point.
+
+A variant of the icosahedron game is the traveling salesman problem (TSP). It is a question of finding the shortest closed path in a complete weighed graph, ie the sides of which have different lengths.
+This is the problem par excellence in combinatorial optimization.
+
+It is not a problem to find a closed loop: in a complete graph at $n$ nodes there exists $ \frac{1}{2}(n-1)! $ closed circuits.
+The problem is finding the best one.
+
+Finding an algorithm that can solve every example of TSP would be an important change of horizon in mathematics: using this method, we would be able to efficiently solve every computational problem for which the answer is easily verifiable. Many consider it impossible.
+
+In particular, in mathematics, computer science and, precisely, combinatorial geometry, graph theory deals with the study of graphs, which are discrete objects that make it possible to schematize a great variety of situations and processes and often allow analysis in quantitative terms and algorithms.
+
+By graph we mean a structure consisting of:
+\begin {itemize}
+\item simple objects, called vertices or nodes;
+\item links between vertices; these links can be:
+\begin {itemize}
+\item not oriented (ie with a direction, but not with a direction): in this case they are called edges, and the graph is called "not oriented";
+\item oriented (ie with a direction and a verse): in this case they are called arcs or paths, and the graph is called "oriented" or digraph;
+\item any data associated with nodes and / or links; a weighted graph is an example of a graph in which a numerical value, called "weight", is associated with each link.
+\end {itemize}
+\end {itemize}
+
+A graph is generally represented on the plane by points or circles, which represent the nodes; the connections between the vertices are represented by segments or curves that connect two nodes; while, in the case of an oriented graph, the direction of the arcs is indicated by an arrow.
+The same graph can be drawn in many different ways without changing its properties.
+
+The structures that can be represented by graphs are present in many disciplines and many problems of practical interest can be formulated as graph-related issues. In particular, networks can be described in the form of graphs.
+Oriented graphs are also used to represent finite state machines and many other formalisms, such as flowcharts, Markov chains, entity-relationship schemas and Petri nets.
+
+The development of algorithms for manipulating graphs is one of the areas of greatest interest in information technology.
+
+As part of the Operational Research, it is to be solved problems of minimum (and vice versa maximum) under appropriate restrictions imposed by the problem under examination and with particular methods that are still being studied. However, it almost always talk about optimizing a rather complex problem. The algorithms created for the resolution of seemingly insoluble problems are the backbone of all the Operations Research and simple reasoning can be thought of by powerful computers to solve problems with hundreds or thousands of variables.
+
+Returning, however, to analyze the theory of the Graphs, unlike many other branches of Operations Research, this work certainly under the graphical display of arcs, nodes and streams. It is noted that any problem of Graphs and Networks apparently describable only in graphical form, instead has its own possible mathematical description and in particular, a linear, linear or non-linear programming formulation.
+
+In this paper we will discuss in particular, after a brief introductory chapter on the graphs and the problem of Perfect Matching, aimed at clarifying definitions and theorems for a greater understanding and a general view of the problem, an algorithm for solving the problem of the Perfect Matching using both the Gurobi and Python languages, related by some examples.
+
+

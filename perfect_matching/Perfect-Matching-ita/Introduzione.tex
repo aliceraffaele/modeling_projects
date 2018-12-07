@@ -1,0 +1,38 @@
+La teoria dei grafi ha una data di nascita precisa: il 1736. In quella data, il matematico svizzero Leonhard Euler risolse il problema noto come i sette ponti di Königsberg. Ci si chiedeva se fosse possibile fare una passeggiata in città, che partisse e arrivasse allo stesso punto, in modo da attraversare tutti i ponti esattamente una volta.
+
+Successivamente, nel 1859 Hamilton propose un gioco che, per diversi aspetti, era legato alla sua teoria dei quaternioni: il gioco dell'icosaedro (che in realtà si giocava su un dodecaedro) era il seguente: Hamilton aveva assegnato a ogni vertice il nome di una città e richiedeva di trovare un percorso che facesse il giro del mondo, ossia visitasse tutte le città una sola volta, per poi tornare al vertice di partenza.
+
+Una variante del gioco dell'icosaedro è il problema del commesso viaggiatore (TSP). Si tratta di trovare il percorso chiuso più breve in un grafo completo pesato, ossia i cui lati hanno lunghezze diverse.
+Questo è il problema per eccellenza nella ottimizzazione combinatoria.
+
+Non è un problema trovare un circuito chiuso: in un grafo completo a $n$ nodi esistono $ \frac{1}{2}(n-1)! $ circuiti chiusi.
+Il problema è trovare il migliore. 
+
+Trovare un algoritmo che possa risolvere ogni esempio di TSP sarebbe un cambio di orizzonte importante in matematica: usando questo metodo, saremmo in grado di risolvere efficientemente ogni problema computazionale per cui la risposta sia facilmente verificabile. Molti lo ritengono impossibile.
+
+In particolare, in matematica, informatica e, precisamente, geometria combinatoria, la teoria dei grafi si occupa di studiare i grafi, che sono oggetti discreti che permettono di schematizzare una grande varietà di situazioni e di processi e spesso di consentirne delle analisi in termini quantitativi e algoritmici.
+
+Per grafo si intende una struttura costituita da:
+\begin{itemize}
+\item oggetti semplici, detti vertici o nodi;
+\item collegamenti tra i vertici; tali collegamenti possono essere:
+\begin{itemize}
+\item non orientati (cioè dotati di una direzione, ma non dotati di un verso): in questo caso sono detti spigoli, e il grafo è detto "non orientato";
+\item orientati (cioè dotati di una direzione e di un verso): in questo caso sono detti archi o cammini, e il grafo è detto "orientato" o digrafo;
+\item eventuali dati associati a nodi e/o collegamenti; un grafo pesato è un esempio di grafo in cui a ogni collegamento è associato un valore numerico, detto "peso".
+\end{itemize}
+\end{itemize}
+
+Un grafo viene generalmente raffigurato sul piano da punti o cerchi, che rappresentano i nodi; i collegamenti tra i vertici sono rappresentati da segmenti o curve che collegano due nodi; mentre, nel caso di un grafo orientato, il verso degli archi è indicato da una freccia.
+Lo stesso grafo può essere disegnato in molti modi diversi senza modificarne le proprietà.
+
+Le strutture che possono essere rappresentate da grafi sono presenti in molte discipline e molti problemi di interesse pratico possono essere formulati come questioni relative a grafi. In particolare, le reti possono essere descritte in forma di grafi. 
+I grafi orientati sono anche utilizzati per rappresentare le macchine a stati finiti e molti altri formalismi, come ad esempio diagrammi di flusso, catene di Markov, schemi entità-relazione e reti di Petri.
+
+Lo sviluppo di algoritmi per manipolare i grafi è una delle aree di maggiore interesse dell'informatica.
+
+Nell'ambito della Ricerca Operativa si vanno a risolvere problemi di minimo (e viceversa di massimo) sotto opportune restrizioni poste dal problema preso in esame e con particolari metodi che sono tuttora oggetto di studio. Si parla comunque quasi sempre di ottimizzazione di un problema piuttosto complesso. Gli algoritmi creati per la risoluzione di problemi all'apparenza irrisolubili costituiscono l'ossatura di tutta la Ricerca Operativa e semplici ragionamenti possono essere pensati da potenti computers per la risoluzione di problemi con centinaia o migliaia di variabili.
+
+Tornando però ad analizzare la Teoria dei Grafi, a differenza di molte altri rami della Ricerca Operativa, questa opera sicuramente sotto la visualizzazione grafica di archi, nodi e flussi. Si nota che qualsiasi problema di Grafi e Reti apparentemente descrivibile solo in forma grafica, ha invece una sua possibile descrizione matematica e in particolare, una formulazione di programmazione lineare, lineare intera o non lineare.
+
+In questo scritto tratteremo in particolare, dopo un breve capitolo introduttivo sui grafi e sul problema del Perfect Matching, volto a dare chiarimenti su definizioni e teoremi per una maggiore comprensione e una visione generale del problema, di un algoritmo per la risoluzione del problema del Perfect Matching usando sia il linguaggio di Gurobi che di Python, correlato da alcuni esempi.

@@ -1,0 +1,11 @@
+Nonostante i vantaggi dell'algoritmo presentato, il codice può essere migliorato. Per esempio, si possono fare le seguenti modifiche:
+\begin{itemize}
+\item I dizionari (.keys all'interno del codice) potrebbero essere usati per i vertici e non per gli archi, ma in questo caso si dovrebbe risolvere il problema dei pesi da assegnare agli archi;
+\item Gli esempi sono stati inseriti in un file python a parte e si potrebbe riuscire a strutturarlo come file di testo e richiamarlo nel file python matching;
+\end{itemize}
+
+L'idea iniziale era quella di utilizzare le funzioni Call-Back, cioè di utilizzarla all'interno del ciclo while come nel caso del TSP (Problema del commesso viaggiatore). In questo caso, tuttavia, le funzioni Call-Back non si potevano usare in quanto Gurobi non permette all'utente di utilizzare il valore delle variabili se non nella fase MIP, cioè in una fase del processo in cui si hanno solo valori interi delle soluzioni, ma il problema che si vuole aggirare con questo algoritmo è proprio quello di usare solo valori interi delle soluzioni.
+
+Si è giunti quindi ad una contraddizione e si è dovuta scartare l'idea di utilizzare Call-Back all'interno del codice.
+
+In conclusione, l'algoritmo può essere migliorato ed è stato aggirato il problema di utilizzare un certo tipo di funzioni all'interno del codice a causa di restrizioni del programma.

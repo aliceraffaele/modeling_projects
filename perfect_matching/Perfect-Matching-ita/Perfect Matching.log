@@ -1,0 +1,723 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.15)  11 JUN 2018 18:23
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"Perfect Matching.tex"
+(./Perfect Matching.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2015/03/17 v1.2c Input encoding file
+))
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2016/04/23 3.9r The Babel package
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel-italian/italian.ldf
+Language: italian 2015/03/26 v1.3n Italian support from the babel system
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2016/04/23 3.9r Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+\it@lettering=\count89
+\it@doublequoteactive=\count90
+\it@ISOcompliance=\count91
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count92
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/frontespizio/frontespizio.sty
+Package: frontespizio 2011/09/21 1.4a (Enrico Gregorio)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks16
+\AP@partial=\box26
+\AP@footins=\box27
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 96.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count93
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2016/05/16 v1.17 At begin shipout hook (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\@envbody=\toks18
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\front@out=\write3
+\openout3 = `"Perfect Matching-frn.tex"'.
+
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has chapter divisions on input line 50.
+
+
+Package tocbibind Note: Using chapter style headings, unless overridden.
+
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/10 v2.15b AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen106
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen107
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count94
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count95
+\leftroot@=\count96
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count97
+\DOTSCASE@=\count98
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+\macc@depth=\count99
+\c@MaxMatrixCols=\count100
+\dotsspace@=\muskip10
+\c@parentequation=\count101
+\dspbrk@lvl=\count102
+\tag@help=\toks20
+\row@=\count103
+\column@=\count104
+\maxfields@=\count105
+\andhelp@=\toks21
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks22
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks24
+\thm@bodyfont=\toks25
+\thm@headfont=\toks26
+\thm@notefont=\toks27
+\thm@headpunct=\toks28
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks29
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+\c@teorema=\count106
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks30
+)
+(./Perfect Matching.aux)
+\openout1 = `"Perfect Matching.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Info: Redefining \it@ocap on input line 85.
+LaTeX Info: Redefining \it@ccap on input line 85.
+
+(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count107
+\scratchdimen=\dimen115
+\scratchbox=\box30
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen116
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
+\everyMPtoPDFconversion=\toks32
+) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box31
+LaTeX Font Info:    Try loading font information for U+msa on input line 89.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 89.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 89.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+) [1
+
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./Intr
+oduzione.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 17.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
+ [1
+
+]) [2] [3]
+(./Perfect Matching.toc)
+\tf@toc=\write4
+\openout4 = `"Perfect Matching.toc"'.
+
+ [4
+
+]
+Capitolo 1.
+(./PMIta.tex
+Underfull \hbox (badness 10000) in paragraph at lines 8--15
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--15
+
+ []
+
+[5
+
+] <bipartito.png, id=31, 602.25pt x 602.25pt>
+File: bipartito.png Graphic file (type png)
+ <use bipartito.png>
+Package pdftex.def Info: bipartito.png used on input line 78.
+(pdftex.def)             Requested size: 117.00119pt x 117.00177pt.
+
+<K5.png, id=33, 220.825pt x 216.81pt>
+File: K5.png Graphic file (type png)
+ <use K5.png>
+Package pdftex.def Info: K5.png used on input line 83.
+(pdftex.def)             Requested size: 117.00119pt x 114.87566pt.
+
+<planare.png, id=34, 517.935pt x 311.1625pt>
+File: planare.png Graphic file (type png)
+ <use planare.png>
+Package pdftex.def Info: planare.png used on input line 89.
+(pdftex.def)             Requested size: 117.00119pt x 70.28867pt.
+
+Overfull \hbox (2.61049pt too wide) in paragraph at lines 76--92
+[]$[]$ $[]$
+ []
+
+[6] [7 <./bipartito.png> <./K5.png> <./planare.png>]
+<matching.png, id=49, 194.52675pt x 239.99663pt>
+File: matching.png Graphic file (type png)
+ <use matching.png>
+Package pdftex.def Info: matching.png used on input line 110.
+(pdftex.def)             Requested size: 214.50119pt x 264.6526pt.
+
+<maximal.png, id=50, 211.08862pt x 139.11975pt>
+File: maximal.png Graphic file (type png)
+ <use maximal.png>
+Package pdftex.def Info: maximal.png used on input line 121.
+(pdftex.def)             Requested size: 234.00238pt x 154.22731pt.
+
+<maximum.png, id=51, 209.88412pt x 162.90863pt>
+File: maximum.png Graphic file (type png)
+ <use maximum.png>
+Package pdftex.def Info: maximum.png used on input line 132.
+(pdftex.def)             Requested size: 234.00238pt x 181.6361pt.
+
+<perfect.png, id=52, 209.28188pt x 161.403pt>
+File: perfect.png Graphic file (type png)
+ <use perfect.png>
+Package pdftex.def Info: perfect.png used on input line 142.
+(pdftex.def)             Requested size: 234.00238pt x 180.4672pt.
+ [8 <./matching.png>] [9 <./maximal.png> <./maximum.png>]
+<matching1.png, id=59, 208.98074pt x 82.20712pt>
+File: matching1.png Graphic file (type png)
+ <use matching1.png>
+Package pdftex.def Info: matching1.png used on input line 158.
+(pdftex.def)             Requested size: 187.2026pt x 73.64326pt.
+
+<matching2.png, id=60, 208.98074pt x 98.769pt>
+File: matching2.png Graphic file (type png)
+ <use matching2.png>
+Package pdftex.def Info: matching2.png used on input line 163.
+(pdftex.def)             Requested size: 187.2026pt x 88.47981pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--166
+[]$[]$
+ []
+
+[10 <./perfect.png>] <bambini.png, id=65, 602.25pt x 309.155pt>
+File: bambini.png Graphic file (type png)
+
+<use bambini.png>
+Package pdftex.def Info: bambini.png used on input line 190.
+(pdftex.def)             Requested size: 234.00238pt x 120.12181pt.
+ [11 <./matching1.png> <./matching2.png>]
+<cover.png, id=69, 200.75pt x 60.225pt>
+File: cover.png Graphic file (type png)
+ <use cover.png>
+Package pdftex.def Info: cover.png used on input line 207.
+(pdftex.def)             Requested size: 187.2026pt x 56.16487pt.
+
+<cover1.png, id=70, 200.75pt x 60.225pt>
+File: cover1.png Graphic file (type png)
+ <use cover1.png>
+Package pdftex.def Info: cover1.png used on input line 212.
+(pdftex.def)             Requested size: 187.2026pt x 56.16487pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--215
+[]$[]$
+ []
+
+[12 <./bambini.png>] <Pm.png, id=75, 187.60088pt x 154.176pt>
+File: Pm.png Graphic file (type png)
+ <use Pm.png>
+Package pdftex.def Info: Pm.png used on input line 238.
+(pdftex.def)             Requested size: 234.00238pt x 192.31485pt.
+)
+[13 <./cover.png> <./cover1.png> <./Pm.png>]
+Capitolo 2.
+(./Algo.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+[14
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+[15]
+
+LaTeX Warning: Command \O invalid in math mode on input line 56.
+
+Missing character: There is no Ø in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--71
+
+ []
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 72.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+) [16]
+
+LaTeX Warning: Command \O invalid in math mode on input line 74.
+
+Missing character: There is no Ø in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+
+ []
+
+
+Overfull \hbox (25.49585pt too wide) in paragraph at lines 77--78
+[]\T1/cmr/m/n/12 se $\OML/cmm/m/it/12 S$ \T1/cmr/m/n/12 è $\OML/cmm/m/it/12 T$\
+T1/cmr/m/n/12 -dispari al-lo-ra vie-ne re-sti-tui-to $[]\OT1/cmr/m/n/12 (\OML/c
+mm/m/it/12 c\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^N\OT1/cmr/m/n/12 (\OML/cmm/m/it
+/12 S\OT1/cmr/m/n/12 ))\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 ;
+ []
+
+[17]
+Overfull \hbox (10.99382pt too wide) in paragraph at lines 132--133
+[]\T1/cmr/bx/n/12 Caso 1\T1/cmr/m/n/12 : $\OML/cmm/m/it/12 ^^N\OT1/cmr/m/n/12 (
+\OML/cmm/m/it/12 S\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 è $\OML/cmm/m/it/12 T$\T1/c
+mr/m/n/12 -dispari. Dal Lem-ma 2.5, $\OML/cmm/m/it/12 ^^U[] \OT1/cmr/m/n/12 = [
+]\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 c\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^N\OT1/
+cmr/m/n/12 (\OML/cmm/m/it/12 S\OT1/cmr/m/n/12 ))\OML/cmm/m/it/12 ; ^^U[]\OMS/cm
+sy/m/n/12 g$\T1/cmr/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--165
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--168
+
+ []
+
+[19]) [20]
+Capitolo 3.
+(./Conclusione.tex) [21
+
+]
+Appendice A.
+(./Codex.tex
+Overfull \hbox (35.97098pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # -----------------------------------------------------------
+--------[] 
+ []
+
+
+Overfull \hbox (54.49146pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # Matching_examples.py contains some useful examples to test 
+this script[] 
+ []
+
+
+Overfull \hbox (35.97098pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # -----------------------------------------------------------
+--------[] 
+ []
+
+
+Overfull \hbox (97.7059pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # Given a graph, this function idefintifies a set of nodes in
+to a single vertex[] 
+ []
+
+[22
+
+]
+Overfull \hbox (23.624pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # Given a graph, this function finds the value of a minimum o
+dd cut[] 
+ []
+
+
+Overfull \hbox (66.83844pt too wide) in paragraph at lines 171--171
+[]    \T1/cmtt/m/n/12 # NETWORKX contains a function that allows to find the mi
+nimum s-t cut[] 
+ []
+
+
+Overfull \hbox (35.97098pt too wide) in paragraph at lines 171--171
+[]                   \T1/cmtt/m/n/12 minCutValue(Contraction(graph, {s,t}), T -
+ {s,t}))[] 
+ []
+
+
+Overfull \hbox (35.97098pt too wide) in paragraph at lines 171--171
+[]                   \T1/cmtt/m/n/12 minCutValue(Contraction(graph, S_bar), T -
+ S_bar))[] 
+ []
+
+[23]
+Overfull \hbox (60.66495pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # Given a set, this function finds all its subsets of a fixed
+ cardinality[] 
+ []
+
+
+Overfull \hbox (35.97098pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # -----------------------------------------------------------
+--------[] 
+ []
+
+
+Overfull \hbox (17.4505pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # Suppress the standard output, it would be invoked too many 
+times[] 
+ []
+
+
+Overfull \hbox (66.83844pt too wide) in paragraph at lines 171--171
+[]   \T1/cmtt/m/n/12 vars[i,j] = m.addVar(lb=0, vtype=GRB.CONTINUOUS, name='e[%
+d,%d]'%(i,j))[] 
+ []
+
+
+Overfull \hbox (54.49146pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # To create the model data structure only once, after variabl
+es creation[] 
+ []
+
+[24]
+Overfull \hbox (97.7059pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 m.setObjective(sum(vars[i,j]*edges[i,j] for i,j in edges.keys
+()), GRB.MINIMIZE)[] 
+ []
+
+
+Overfull \hbox (35.97098pt too wide) in paragraph at lines 171--171
+[]\T1/cmtt/m/n/12 # -----------------------------------------------------------
+--------[] 
+ []
+
+
+Overfull \hbox (35.97098pt too wide) in paragraph at lines 171--171
+[]    \T1/cmtt/m/n/12 print(str(vertices - linked) + ' is a set of isolated ver
+tices!')[] 
+ []
+
+
+Overfull \hbox (85.35892pt too wide) in paragraph at lines 171--171
+[]        \T1/cmtt/m/n/12 print('\n--------------------------------------------
+------------\n')[] 
+ []
+
+
+Overfull \hbox (73.01193pt too wide) in paragraph at lines 171--171
+[]        \T1/cmtt/m/n/12 selected = [(i,j) for i,j in solution.keys() if solut
+ion[i,j] != 0][] 
+ []
+
+
+Overfull \hbox (23.624pt too wide) in paragraph at lines 171--171
+[]            \T1/cmtt/m/n/12 print('    ' + str((i,j)) + ' : ' + str(solution[
+i,j]))[] 
+ []
+
+[25]
+Overfull \hbox (66.83844pt too wide) in paragraph at lines 171--171
+[]            \T1/cmtt/m/n/12 m.addConstr(sum(vars[i,j] for (i,j) in cut_edges.
+keys()) >= 1)[] 
+ []
+
+
+Overfull \hbox (54.49146pt too wide) in paragraph at lines 171--171
+[]                \T1/cmtt/m/n/12 print('    ' + str((i,j)) + ' : ' + str(cut_e
+dges[i,j]))[] 
+ []
+
+) [26]
+Appendice B.
+(./Examples.tex [27
+
+]) [28] [29
+
+] (./Perfect Matching.aux) ) 
+Here is how much of TeX's memory you used:
+ 4109 strings out of 493014
+ 54328 string characters out of 6133350
+ 125892 words of memory out of 5000000
+ 7491 multiletter control sequences out of 15000+600000
+ 27018 words of font info for 79 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,8n,24p,884b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips
+/cm-super/cm-super-t1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1
+000.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx120
+0.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1728.
+pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pf
+b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/lo
+cal/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/
+texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on "Perfect Matching.pdf" (30 pages, 726137 bytes).
+PDF statistics:
+ 221 PDF objects out of 1000 (max. 8388607)
+ 144 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+

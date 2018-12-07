@@ -1,0 +1,167 @@
+Before explaining all details about the algorithm we developed, we need to introduce some theoretical concept. \\
+
+Consider a graph $G = (V, E)$, defined as a couple of sets: $V$ for vertices, $E$ for edges; $\delta_{G}(S)$ (or $\delta(S)$) is the set of those edges in $E$ with precisely one end-vertex in $S$, subset of $V$. We define a \emph{graft} $(G,T)$ as a connected graph $G$\footnote{A graph $G = (V,E)$ is said \emph{connected} if, for all pairs $(u,v) \in V$ there exists a path between them. A maximal connected subgraph of an undirected graph is said \emph{connected component} of the graph.} in which an even number of vertices $T \subseteq V$ have been distinguished as \emph{odd}. The \emph{T-parity} of a set of vertices $S \subseteq V$ is the parity of $|S \cap T|$. When $S \subseteq V$ is $T$-odd then $\delta(S)$ is a \emph{T-odd cut} or \emph{T-cut}. \\
+  
+ In order to make a complete description of the algorithm developed, consider the following concept: the \textbf{Gomory-Hu tree}\footnote{Recall that an acyclic graph is a \emph{forest} and a connected forest is a \textbf{tree}} of an undirected graph, i.e. a graph without orientation, is a weighted tree that represents the minimum $\{s,t\}$-cuts for all $\{s,t\}$ pairs in the graph. The Gomory-Hu tree can be constructed in $|V| - 1$ maximum flow computations.
+ 
+ \begin{definition}
+ Let $G = ((V_G, E_G), c)$ be an undirected graph with $c(u,v)$ being the capacity of the edge $(u,v)$ respectively. Denote the minimum capacity of an $\{s,t\}$-cut by $\lambda_{s,t}$ for each $\{s,t\} \in V_G$. Let $T = (V_T, E_T)$ be a tree with $V_T = V_G$, denote the set of edges in an $\{s,t\}$ path by $P_{s,t}$ for each $\{s,t\} \in V_T$. Then $T$ is said to be a \textbf{Gomory-Hu tree} of $G$ if
+ \[
+ \lambda_{s,t} = \min_{e \in P_{s,t}} c(S_e, T_e) \quad \text{for all} \quad \{s,t\} \in V_{G},
+ \]
+ where
+ \begin{enumerate}
+ \item $S_e$ and $T_e$ are the two connected components of $T \setminus \{e\}$ in the sense that $(S_e, T_e)$ forms a $s,t$-cut in G. \\
+ \item $c(S_e, T_e)$ is the capacity cut in G.
+ \end{enumerate}
+ \end{definition}
+Let $(G,T)$ be a graft and $c: E \to \R_+$ be a \emph{cost} function. A minimum $T$-cut for $(G,T,c)$ is a $T$-cut $\delta(X)$ of $(G,T)$ for which:
+\[
+c(\delta(X)) = \lambda_{G,T} = \min\{c(\delta(S)): \delta(S)\quad \text{is a $T$-cut of}\quad(G,T) \}
+\]
+where the cost $c(F)$ of a set $F$ of edges is defined as $\sum_{e \in F} c(e)$.
+In particular, we recall some basic facts about submodularity and uncrossing. The complement in $V$ of $S \subseteq V$ is denoted by $\bar{S} = V \setminus S$. \emph{Switching} $S$ means replacing $S$ by $\bar{S}$. For example, if $S = X$, then after switching $S$ we obtain that $S = \bar{X}$ and $\bar{S} = X$. \\
+Let $(G, T)$ be a graft and $S \subseteq V$ a set of nodes. 
+
+\begin{observation}
+Switching S does not change the $T$-parity of a $S$ (nor  $\delta(S)$), since $|S \cap T|$ and $|\bar{S} \cap T|$ have the same parity since $|T|$ is even.
+\end{observation}
+
+\begin{proposition}
+Let (G,T) be a graft and $S, X \subseteq V$. Then we have: 
+\begin{enumerate}
+\item Switching S change the $T$-parity of $S \cap X$ if and only if $X$ is T-odd.\\
+\item $S \cap X$ and $S \cup X$ have the same $T$-parity if and only if $S$ and X have the same T-parity. \\
+\item Switching S changes the T-parity of $S \cup X$ if and only if X is T-odd.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Note that $|(S \cap X) \cap T| = |S \cap (X \cap T)|$ whose parity is affected by switching $S$ if and only if $|X \cap T|$ is odd, that is, if and only if $X$ is $T$-odd. This gives $(1)$. To obtain $(2)$ note that $|(S \cap X) \cap T| + |(S \cup X) \cap T| = |S \cap T| + |X \cap T|$. Finally, $(3)$ is a consequence of $(1)$ and $(2)$.
+\end{proof}
+
+The following lemma expresses a property of cuts known as \emph{submodularity}.
+\begin{lemma}
+Let G be a graph with cost function $c: E \longmapsto \R_+$. Let $S_{1}, S_{2} \subseteq V$.
+\begin{equation}
+c(\delta(S_{1} \cap S_{2})) + c(\delta(S_{1} \cup S_{2})) \leq c(\delta(S_1)) + c(\delta(S_2))
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We claim that each edge $uv$ contributes to the right at least as to the left side of (2.1). By Proposition 2.2, if $S_1 \cap S_2$ have different $\{u,v\}$-parities, so do $S_1$ and $S_2$. Hence, had our claim to be false, then both $S_1 \cap S_2$ and $S_1 \cup S_2$ would be $\{u,v\}$-odd. Assume w.l.o.g. that $u \in S_1 \cup S_2$ and $u \notin S_1 \cup S_2$. Then, $u \in S_1, S_2$ and $u \notin S_1, S_2$
+\end{proof}
+
+If $S \cap X \neq \O$ for every possible switching of $S$ and $X$, then $S$ and $X$ are said to \emph{cross}. All what we will need about cut functions is that they obey to the following lemma. 
+
+\begin{lemma}
+Let $T_{1}, T_{2}$ be even cardinality subsets of V. Let $\delta(S_1)$ be a minimum $T_1$-cut and assume that $S_1$ is $T_2$-even. Then there exists a minimum $T_2$-cut $\delta(S_2)$ such that $S_1$ and $S_2$ do not cross.
+\end{lemma}
+
+\begin{proof}
+Let $\delta(X)$ be a minimum $T_2$-cut. We remark that, by Proposition 2.2, switching $S_1$ changes the $T_2$-parity of $S_1 \cup X$ whereas switching $X$ changes the $T_1$-parity of $S_1 \cap X$ leaving the $T_2$-parity of $S_1 \cup X$ unaffected. Therefore, by possibly switching $S_1$, we can assume that $S_1 \cup X$ is $T_2$-odd. Afterwards, by possibly switching $X$, we can assume that $S_1 \cap X$ is $T_1$-odd without affecting the $T_2$-parity of $S_1 \cup X$. 
+At this point, $c(\delta(S_1 \cup X)) \ge c(\delta(S_1))$ since $\delta(S_1)$ is a minimum $T_1$-cut. By sub-modularity, $c(\delta(S_1 \cup X)) = c(\delta(X))$. Thus, $\delta(S_1 \cup X)$ is a minimum $T_2$-cut. And clearly, $S_1$ and $S_1 \cup X$ do no cross. 
+\end{proof}
+
+\section{Minimum $T$-cuts: a simple algorithm}
+Now, we will present an algorithm for $T$-cut. Consider a graft $(G,T)$ and a $T$-even set $S \subseteq V$, denoted by $G_S$ the graph obtained from $G$ by identifying all nodes in $S$ into a single node and letting $T_S := T \setminus S$. Note that $(G_S, T_S)$ is a graft. When $S = \{ s, t \} \subseteq T$ then we rely on a shorter notation $G_{s,t} = G_{\{s,t\}}$ and $T_{s,t} = T_{\{s,t\}}$. \\
+Since node identification does not affect the edge set of a graph, a cost function $c$ for $G$ is also a cost function for $G_S$ and $G_{s,t}$.
+Then, we show four steps to compute $\lambda_{G,T}$:\\
+
+\texttt{MinT-cut(G,T,c)}
+\begin{enumerate}
+\item if $T = \O$ then return $\infty$, that means $(G,T)$ does not contains any $T$-cut;\\
+\item let $s$ and $t$ be any two different nodes in $T$; \\
+\item let $\delta(S)$ be a minimum $\{s,t\}$-cut; \\
+\item if $S$ is $T$-odd then return $\min( c(\delta(S)), \texttt{MinT-cut($G_{s,t}, T_{s,t}$, c)})$; otherwise return $\min(\texttt{MinT-cut($G_{S}, T_{S}$, c)}; \texttt{MinT-cut($G_{\bar{S}}, T_{\bar{S}}$, c)})$
+\end{enumerate}
+
+\section{Correctness}
+For a given $(G,T,c)$, let $s$ and $t$ be any two different nodes in $T$ and let $\delta(S)$ be a minimum $\{s,t\}$-cut. The correctness of the above procedure relies on the following two lemmas:
+\begin{lemma}
+If $\delta(S)$ is T-odd, then $\lambda_{G,T} = \min(c(\delta(S)), \lambda_{G_{s,t}, T_{s,t}})$.
+\end{lemma}
+
+\begin{proof}
+Indeed, the $T_{s,t}$-cuts of $G_{s,t}$ are precisely the $T$-cuts of $G$ that are not $\{s,t\}$-odd.
+\end{proof}
+
+\begin{lemma}
+If $\delta(S)$ is T-even, then $\lambda_{G,T} = \min( \lambda_{G_{S}, T_{S}}, \lambda_{G_{\bar{S}}, T_{\bar{S}}})$.
+\end{lemma}
+
+\begin{proof}
+First note that every $T_S$-cut in $(G_S, T_S)$ and every $T_{\bar{S}}$-cut in $(G_{\bar{S}},T_{\bar{S}})$ is also a $T$-cut in $(G,T)$. This implies $\lambda_{G,T} \le \min( \lambda_{G_{S}, T_{S}}, \lambda_{G_{\bar{S}}, T_{\bar{S}}})$. 
+For the converse, let $\delta(X)$ be any minimum $T$-cut for $(G,T,c)$. By Lemma 2.4, we can assume that $S$ and $X$ do not cross. This means that the edge set $\delta_{G}(X)$ is either a $T_S$-cut in $G_S$ or a $T_{\bar{S}}$-cut in $G_{\bar{S}}$.
+\end{proof}
+
+\section{Computing optimal $T$-parings}
+Let $(G,T)$ be a graft with cost function $c: E \longmapsto \R_+$. A \emph{T-pairing} is a partition of $T$ into pairs. The value of the $T$-pairing $\mathcal{P}$ is defined as: 
+\[
+val_G (\mathcal{P}) = \min_{\{u,v\} \in \mathcal{P}} \lambda_{G}(u,v) 
+\]
+where $\lambda_G (u,v)$ denotes the cost of a minimum $\{u,v\}$-cut, Let $\mathcal{P}$ be any $T$-pairing and $\delta(S)$ be any $T$-cut. Since $\delta(S)$ is $T$-odd, $\mathcal{P}$ contains a pair $\{u,v\}$ such that $\delta(S)$ is $\{u,v\}$-odd. Therefore, $c(\delta(S)) \ge \lambda_G (u,v) \ge val_G (\mathcal{P})$ and the value of $\mathcal{P}$ is a lower bound on $\lambda_{G,T}$.\\
+In this section, we show that the algorithm \emph{MinT-cut} actually finds a $T$-pairing of value $\lambda_{G,T}$. Indeed, consider a single iteration of the algorithm. Let $s$ and $t$ be two odd nodes. Let $\delta(S)$ be a minimum $\{s,t\}$-cut. 
+
+\begin{lemma}
+Let $\delta(S)$ be a minimum $\{s,t\}$-cut in $(G,c)$. Then we have: 
+\[
+\lambda_G (u,v) \ge \min(c(\delta(S)), \lambda_{G_{s,t}}(u,v)) \qquad \forall u,v \in V(G) \setminus \{s,t\}
+\]
+\end{lemma}
+
+\begin{proof}
+Indeed, the $\{u,v\}$-cuts of $G_{s,t}$ are exactly the $\{u,v\}$-cuts of $G$ that are not $\{s,t\}$-odd.
+\end{proof}
+
+\begin{lemma}
+Let $\delta(S)$ be a minimum $\{s,t\}$-cut in $(G,c)$. Then we have: 
+\[
+\lambda_G (u,v) = \lambda_{G_{s}} (u,v) \qquad \forall u,v \in V(G) \setminus S
+\]
+\end{lemma}
+
+\begin{proof}
+Let $u$ and $v$ be two any nodes in $V(G) \setminus S$. Obviously $\lambda_G (u,v) \le \lambda_{G_{s}} (u,v)$. For the converse, let $\delta(X)$ be any minimum $\{u,v\}$-cut in $G$. By Lemma 2.4, we can assume that $S$ and $X$ do not cross. Then, the edge set $\delta_{G}(X)$ is a $\{u,v\}$-cut in $G_S$ and $\lambda_G (u,v) = \lambda_{G_{s}} (u,v)$.
+\end{proof}
+
+Each iteration of the algorithm contemplates two possibilities: 
+\begin{enumerate}
+\item \textbf{Case 1}: $\delta(S)$ is $T$-odd. By Lemma 2.5, $\lambda_{G,T} = \min\{c(\delta(S)), \lambda_{G_{s,t},T_{s,t}}\}$. By Lemma 2.7, if $\mathcal{P'}$ is a $T_{s,t}$-pairing with $val_{G_{s,t}}(\mathcal{P'}) = \lambda_{G_{s,t},T_{s,t}}$, then $\mathcal{P} = \mathcal{P'} \cup \{s,t\}$ is a $T$-pairing with $val_{G} (\mathcal{P}) \ge \min(c(\delta(S)), val(\mathcal{P'})) = \min(c(\delta(S)), \lambda_{G_{s,t},T_{s,t}}) = \lambda_{G,T}$. \\
+\item \textbf{Case 2}: if $\delta(S)$ is $T$-even. By Lemma 2.6, $\lambda_{G,T} = \min\ \lambda_{G_{S},T_{S}}, \lambda_{G_{\bar{S}},T_{\bar{S}}}\}$. By Lemma 2.8, if $\mathcal{P_S}$ is a $T_{S}$-pairing with $val_{G_{S}} (\mathcal{P_S}) = \lambda_{G_{S},T_{S}}$ and $\mathcal{P_{\bar{S}}}$ is a $T_{\bar{S}}$-pairing with $val_{G_{\bar{S}}} (\mathcal{P_{\bar{S}}}) = \lambda_{G_{\bar{S}},T_{\bar{S}}}$ then $\mathcal{P} = \mathcal{P_S} \cup \mathcal{P_{\bar{S}}}$ is a $T$-pairing with $val_{G} (\mathcal{P}) \ge \min(val(\mathcal{P_S}), val(\mathcal{P_{\bar{S}}})) = \min(\lambda_{G_{S},T_{S}}\lambda_{G_{\bar{S}},T_{\bar{S}}}) = \lambda_{G,T}$.
+\end{enumerate}  
+
+The following results summarize this section. 
+
+\begin{theorem}
+For every $(G,T,c)$ the maximum value of a $T$-pairing equals the minimum cost of a T-cut.
+\end{theorem}
+
+\begin{theorem}
+For every node u in T there exists a node $v \in T \setminus \{u\}$ such that $\{u,v\}$ is useful.
+\end{theorem}
+
+\begin{proof}
+Apply algorithm \emph{MinT-cut} to $(G,T,c)$. At each recursion, keep choosing $s = u$ until the minimum $\{s,t\}$-cut $\delta(S)$ is $T$-odd. By Lemma 2.8, $\{u,v\}$ is useful w.r.t. $(G,T,c)$.
+\end{proof}
+
+\section{Algorithm}
+We have developed an algorithm on Python using both Gurobi and Python languages. It can be run using Spyder\footnote{It is in Anaconda.}(full code is in Appendix A). In what follows, we analyze the main aspects of the algorithm. It is composed of two parts: 
+\begin{enumerate}
+\item In the first part, we gave four important functions: \texttt{Contraction}, \texttt{minCutValue}, \texttt{findsubsets} and \texttt{minCutEdges};\\
+\item After that,  we developed the model (constraint and objective function). The final \texttt{while} cycle optimize the model. 
+\end{enumerate}
+
+We start analyzing the second part of the code. First, we create the variables: we define a lower bound at zero and consider them continuous as type. At the beginning, we defined them as binary variable, but in this way we always found an integer solution. So in order to solve a real problem (i.e. non integer solution), we have decided to change the variables type as continuous. In this case, at first we obtain a non-integer solution. 
+Then we add the objective function: 
+\[
+\min \sum_{ij} \texttt{edges} \cdot \texttt{var}
+\]
+that minimizes the sum of all products between the continuous variable \texttt{var} and \texttt{edges} which represents the cost value of the considered edge. The only constraint we consider: the sum of all edges entering in a certain vertex must be 1. \\
+After looking for edges incident to a vertex $i$ and after building up the constraint we explained before, we define the optimization model. We iteratively make the code looking for integer solution thanks to a while-cycle. This means that, in the cycle, it optimizes the model, then it finds the value of minimal odd cut and checks if this value is less or greater than 1. \\
+If the minimal odd cut is less than 1, it finds the edges of the minimal odd cut and adds a constraint, that is the sum of the variables associated to the edges of the minimal cut have to be greater or equal to 1.  And so on, until it finds an integer solution. \\
+
+In the first part of the code, we import firstly the useful modules we need to develop the optimization model. This part is based on finding minimum $T$-cut.
+We define a function for contraction, which at the end creates a minor of $G$. Then, the function \texttt{minCutValue(graph, T)} finds the value of minimum odd cut  of a given graph; \texttt{T} is a datum used during the recursion: it must be initially set equal to '\texttt{vertices}'. The third function we define is \texttt{findsubset}, which finds all subsets of a fixed cardinality of a given set. Given a graph and the value of one of its minimum odd cuts, we construct a function which finds the edges of the minimum odd cut \texttt{minCutEdges}.   \\
+
+In another file Python we have considered some graphs on which test the algorithm, such as Petersen graph, TSP problem, an unfeasible graph (i.e. a graph which has not a perfect matching) and $K(5)$ graph which are described in Appendix B. 
