@@ -1,0 +1,152 @@
+
+
+# DANTZIG-WOLFE DECOMPOSITION 
+# on bounded sets
+
+
+model DWgeneral.mod;
+data TestEx.dat;
+
+param nIter default 0;
+param success default 0;
+param mincost;
+param initialChekparameter default 0;
+#option omit_zero_rows 1;
+#option display_1col 0;
+option display_eps .000001;
+
+# ----------------------------------------------------------
+
+#Restricted Master
+problem RMaster: Total_Restricted_Cost, lambda, Restricted_Coupled, Convex;
+
+#Subproblems
+problem Subproblem{p in 1..m}: 
+	Reduced_Cost[p], 
+	{j in 1..ni[p]} x[p,j],
+	{i in 1..ki[p]} Set_constraint[p,i]; 
+
+
+#to check if initial data is feasible
+#problem initialCheck: nothing, y, couple, convex2;
+
+
+
+let {i in 1..ki[0]} dual_cost_y[i] := 1;
+let {p in 1..m} dual_cost_z[p] := 1;
+let {p in 1..m} numberOfvertices[p] := numberOfInitialVertices[p];
+
+let {p in 1..m, i in 1..ni[p]} cost_subproblem[p,i] := 
+		c[p,i] - (sum{j in 1..ki[0]} dual_cost_y[j]*A[0,p,j,i]);
+
+let{p in 1..m,i in 1..numberOfvertices[p],j in 1..ni[p]}
+	 vertices[p,i,j] := initial_vertices[p,i,j];
+
+
+
+
+#At the beginning step we need the costs for the RM:
+let {p in 1..m,i in 1..numberOfvertices[p]}
+	restricted_master_cost[p,i] := sum{j in 1..ni[p]} c[p,j]*vertices[p,i,j];
+
+
+
+
+	
+
+let {p in 1..m,j in 1..ki[0], k in 1..numberOfvertices[p]}
+	restricted_couple_cost[p,k,j] :=
+		sum{i in 1..ni[p]} A[0,p,j,i]*vertices[p,k,i];
+
+#a check if you have the right amount of beginning variables (not necessary?)
+if sum{p in 1..m} numberOfvertices[p] < ki[0] + m then {
+	printf "\nNOT EXACT NUMBER OF INITIAL VECTORS.\n";
+	};
+
+
+####ONLY CHEK, NOT NECESSARY
+#solve initialCheck;
+
+#for {p in 1..m} {
+#	for {j in 1..numberOfvertices[p]} {
+#		if y[p,j] >= 0 then {
+#			let initialChekparameter := initialChekparameter + 1;
+#		}
+#	}
+#}
+
+#if initialChekparameter < ki[0]+m then {
+#	printf "\nNO CORRECT INITIAL DATA! POSSIBLY WRONG OUTPUT.\n";
+#}
+
+####CHECK UP TO HERE
+
+repeat { 
+
+	let nIter := nIter + 1;
+	printf "\nITERATION %d\n", nIter;
+	
+	#let {p in 1..m,j in 1..ki[0], k in 1..numberOfvertices[p]}
+	#restricted_couple_cost[p,k,j] :=
+	#	sum{i in 1..ni[p]} A[0,p,j,i]*vertices[p,k,i];
+	
+	display restricted_master_cost;
+	display restricted_couple_cost; 
+	solve RMaster;
+	
+	printf "\nRestrictedMaster solution nr. %d\n", nIter;
+	display lambda;
+	
+	let {i in 1..ki[0]} dual_cost_y[i] := Restricted_Coupled[i].dual;#lambda dual Restricted_Couple;
+	let {p in 1..m} dual_cost_z[p] := Convex[p].dual;#lambda dual convex
+	
+	printf "\nDual variables nr. %d\n", nIter;
+	display dual_cost_z;
+	display dual_cost_y;
+	
+	let {p in 1..m,i in 1..ni[p]} cost_subproblem[p,i] := 
+		c[p,i] - (sum{j in 1..ki[0]} dual_cost_y[j]*A[0,p,j,i]);
+	
+	display cost_subproblem;
+
+	
+	for {p in 1..m} { 
+
+		solve Subproblem[p];
+
+		if Reduced_Cost[p] < dual_cost_z[p] -0.00001 then {
+			printf "\nNew vertex of supbroblem %d\n", p;
+			display {i in 1..ni[p]} x[p,i];	
+			let numberOfvertices[p] := numberOfvertices[p] + 1;
+			let{i in 1..ni[p]} vertices[p, numberOfvertices[p], i] := x[p,i];
+			let restricted_master_cost[p,numberOfvertices[p]] :=
+				sum{j in 1..ni[p]} c[p,j]*vertices[p,numberOfvertices[p],j];
+		
+			display restricted_master_cost;
+		
+		}
+		
+		else {
+			let success := success+1;
+		};
+	};
+	if success = m then {
+		printf "\nOPTIMAL SOLUTION:\n";
+		
+		let {p in 1..m,i in 1..ni[p]} 
+			x[p,i] := sum{j in  1..numberOfvertices[p]} 
+				lambda[p,j]*vertices[p,j,i];
+			display x;
+			printf "\nOBJECTIVE FUNCTION VALUE:\n";
+			let mincost := sum{p in 1..m,i in 1..ni[p]} x[p,i]*c[p,i];
+			display mincost;
+		break;
+	};
+	let success := 0;
+	
+	let {p in 1..m,j in 1..ki[0], k in 1..numberOfvertices[p]}
+	restricted_couple_cost[p,k,j] :=
+		sum{i in 1..ni[p]} A[0,p,j,i]*vertices[p,k,i];
+};	
+
+

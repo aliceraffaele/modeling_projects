@@ -1,0 +1,64 @@
+
+# DANTZIG-WOLFE DECOMPOSITION
+# Bounded Problem
+
+param N := 3; #total number of variables
+param K := 7; #total number of constraints
+param m := 1; #number of systems 
+
+#subdivision of variables, nj[j] = dimension;
+param ni :=
+1 3;
+
+#subdivision of constraints in sets of ki[i] constraints;
+param ki :=
+0 1
+1 6; 
+
+#all constraint values, subdivised
+#b{i in 0..m,1..ki[i]}
+param b :=
+	[0,*] :=
+		1 17
+	[1,*] :=
+		1 2
+		2 2
+		3 2
+		4 -1
+		5 -1
+		6 -1;
+
+#all cost values, subdivised 
+#{i in 1..m,1..ni[i]}
+param c :=
+	[1,*] :=
+		1 -4
+		2 -1
+		3 -6;
+		
+#within index; #specify what matrices, can done by RUN
+set iindex := 
+(0,1)
+(1,1);
+
+#{(i,j) in iindex, 1..ki[i], 1..ni[j]}
+param A := 
+	[0,1,*,*]: 1 2 3 :=
+		1 3 2 4
+	[1,1,*,*]: 1 2 3:=
+		1 1 0 0
+		2 0 1 0
+		3 0 0 1
+		4 -1 0 0
+		5 0 -1 0
+		6 0 0 -1;
+		
+		
+param numberOfInitialVertices := #{p in 1..m};
+1 2;
+
+#{p in 1..m, 1..numberOfvertices[p], 1..ni[p]}; 		
+param initial_vertices := 
+		[1,*,*]: 1 2 3:=
+			1 2 2 2
+			2 1 1 2;
